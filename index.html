@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스카이라이프 웹 서비스 파트 신입사원 교육</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- PDF.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';</script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Comic Section -->
+        <section id="comic-section" class="section glass-panel">
+            <div class="comic-container">
+                <div class="character-presentation">
+                    <div class="character-wrapper slide-in-bottom">
+                        <img src="guide.png" alt="가이드" class="character-img" id="guide-character">
+                    </div>
+                    <div class="character-name-badge fade-in-delayed">웹앱파트 담당자</div>
+                </div>
+                <div class="speech-bubble-wrapper fade-in-delayed">
+                    <div class="speech-bubble">
+                        <p id="comic-text"></p>
+                    </div>
+                </div>
+                <div class="controls fade-in-delayed">
+                    <button id="next-comic-btn" class="btn primary-btn" style="display: none;">다음으로 ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section id="resources-section" class="section glass-panel hidden">
+            <h2>📚 핵심 교육 자료</h2>
+            <p>본격적인 퀴즈에 앞서 아래 슬라이드를 꼼꼼히 확인해 보세요!</p>
+
+            <div class="resource-actions" style="margin-bottom: 20px; text-align: center;">
+                <a href="SkyLife_Operations_Guide_(2).pdf" class="btn secondary-btn" download>📥 교육 자료 PDF 다운로드
+                    (소장용)</a>
+            </div>
+
+            <div id="pdf-container" class="pdf-viewer-container">
+                <div id="pdf-loading-msg">자료를 불러오는 중입니다...⏳</div>
+                <!-- PDF Canvases will be injected here -->
+            </div>
+
+            <button id="start-quiz-btn" class="btn primary-btn mt-4">자료를 다 봤어요! 퀴즈 시작하기 🚀</button>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz-section" class="section glass-panel hidden">
+            <div class="quiz-header">
+                <h2>도전! 웹 파트 마스터 퀴즈</h2>
+                <div class="progress-bar-container">
+                    <div id="quiz-progress" class="progress-bar"></div>
+                </div>
+                <p id="question-tracker">문제 1 / 3</p>
+            </div>
+
+            <div id="quiz-container">
+                <h3 id="question-text" class="question-title"></h3>
+                <div id="options-container" class="options-grid"></div>
+            </div>
+
+            <div id="feedback-container" class="hidden">
+                <h4 id="feedback-title"></h4>
+                <p id="feedback-desc"></p>
+                <button id="next-question-btn" class="btn primary-btn mt-4">다음 문제 ➔</button>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section id="video-section" class="section glass-panel hidden" style="text-align: center;">
+            <h2>🎬 보너스 영상 시청</h2>
+            <p style="margin-bottom: 20px; color: #ccc;">스카이라이프 웹 서비스 파트의 활약이 담긴 짧은 영상을 확인해 보세요!</p>
+            <div class="video-container" style="margin-bottom: 25px;">
+                <video id="bonus-video" controls
+                    style="width: 100%; max-height: 50vh; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                    <source src="두_웹사이트_이야기__KT_스카이라이프의_두_얼굴.mp4" type="video/mp4">
+                    브라우저가 동영상 재생을 지원하지 않습니다.
+                </video>
+            </div>
+            <button id="finish-btn" class="btn primary-btn mt-4">영상 다 봤어요! 마무리하기 🎉</button>
+        </section>
+
+        <!-- Result Section -->
+        <section id="result-section" class="section glass-panel hidden" style="text-align: center;">
+            <h2>🎉 수고하셨습니다!</h2>
+            <p>치열하지만 보람찬 스카이라이프 <strong>DX지원팀</strong>의 다이나믹한 세계로 오신 것을 다시 한번 진심으로 환영합니다. 앞으로 잘 부탁드립니다!</p>
+
+            <!-- Team Celebration Image sliding up -->
+            <div class="team-celebration-wrapper">
+                <img src="team_celebration.png" alt="DX지원팀 축하" class="team-celebration-img">
+            </div>
+
+            <button id="restart-btn" class="btn secondary-btn mt-4">처음부터 다시 보기</button>
+
+            <!-- Confetti container covers full screen -->
+            <div class="confetti-container"></div>
+        </section>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
